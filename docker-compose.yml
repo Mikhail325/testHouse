@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+    nginx:
+        image: nginx
+        volumes:
+            - ./:/var/www/
+            - ./_docker/nginx/conf.d/:/etc/nginx/conf.d/
+        ports:
+            - "8080:80"
+        container_name: app_nginx
+        depends_on:
+            - app
+            - db
+    db:
+        image: postgres:16
+        restart: always
+        volumes:
+            - ./tmp/db:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: kitchen
+            POSTGRES_PASSWORD: root
+            POSTGRES_USER: root
+        ports:
+            - "8101:5432"
+        container_name: db
+    app:
+        build:
+            context: .
+            dockerfile: _docker/app/Dockerfile
+        volumes:
+            -  ./:/var/www/
