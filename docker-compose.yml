@@ -16,7 +16,7 @@ services:
         image: postgres:16
         restart: always
         environment:
-            POSTGRES_DB: kitchen
+            POSTGRES_DB: house
             POSTGRES_PASSWORD: root
             POSTGRES_USER: root
         ports:
