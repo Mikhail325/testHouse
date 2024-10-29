@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('feedback', function (Blueprint $table) {
+            $table->comment('Отзыв о товаре');
             $table->id();
+            $table->text('feedback')->comment('Отзыв');
+            $table->unsignedBigInteger('id_product')->comment('id товара');
+            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

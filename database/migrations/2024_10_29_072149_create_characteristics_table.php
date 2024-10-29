@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('characteristics', function (Blueprint $table) {
+            $table->comment('Таблица характеристик товара');
             $table->id();
+            $table->text('name')->comment('Название характеристики');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

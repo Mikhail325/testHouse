@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('products', function (Blueprint $table) {
+            $table->comment('Таблица товаров');
             $table->id();
+            $table->text('name')->comment('Название товара');
+            $table->float('price', 10, 2)->comment('Стоимость товара');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
