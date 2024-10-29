@@ -15,8 +15,6 @@ services:
     db:
         image: postgres:16
         restart: always
-        volumes:
-            - ./tmp/db:/var/lib/postgresql/data
         environment:
             POSTGRES_DB: kitchen
             POSTGRES_PASSWORD: root
