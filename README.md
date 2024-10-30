@@ -22,7 +22,7 @@
 ```
 
 ### Инструкции по установке c помощью Docker
-
+* Скапировать файл .env.example и преименовать его в .env
 * Для запуска контейнера необходимо вексти **docker-compose up -d --build**. Далее нужно зайти в контейнер с помошью **sudo docker exec -t -i backend /bin/bash**
 и выполнить команды **php composer.phar install** и **php artisan migrate:fresh --seed** после чего проэкт будет доступен по адрессу **http://127.0.0.1:8001**
 
