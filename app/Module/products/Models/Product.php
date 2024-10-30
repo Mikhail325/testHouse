@@ -2,8 +2,6 @@
 
 namespace App\Module\products\Models;
 
-use App\Module\products\Models\Characteristic;
-use App\Module\products\Models\Feedback;
 use Database\Factories\ProductFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +13,7 @@ class Product extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    protected $hidden = ["created_at", "updated_at", "deleted_at"];
     protected static function newFactory()
     {
         return ProductFactory::new();
@@ -25,11 +23,11 @@ class Product extends Model
      */
     public function characteristic()
     {
-        return $this->belongsToMany(Characteristic::class);
+        return $this->belongsToMany(Characteristic::class, 'characteristic_product', 'product_id', 'characteristic_id');
     }
 
-    public function feedback()
+    public function feedbacks()
     {
-        return $this->hasMany(Feedback::class);
+        return $this->hasMany(Feedback::class, 'id_product', 'id');
     }
 }

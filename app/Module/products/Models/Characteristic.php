@@ -14,6 +14,8 @@ class Characteristic extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $hidden = ["created_at", "updated_at", "deleted_at"];
+
     protected static function newFactory()
     {
         return CharacteristicFactory::new();
@@ -23,6 +25,6 @@ class Characteristic extends Model
      */
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class, 'characteristic_product','characteristic_id', 'product_id');
     }
 }

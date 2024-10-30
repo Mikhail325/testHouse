@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->text('feedback')->comment('Отзыв');
             $table->unsignedBigInteger('id_product')->comment('id товара');
-            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('id_product')->on('products')->references('id')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

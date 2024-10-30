@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Module\products\Controllers\CatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('catalog')->group(function () {
+    Route::get('/', [CatalogController::class, 'getListProducts']);
 });
-
-/*
- * Блог: все посты, посты категории, посты тега, страница поста
- */

@@ -12,13 +12,13 @@ class Feedback extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    protected $hidden = ["created_at", "updated_at", "deleted_at"];
     protected static function newFactory()
     {
         return FeedbackFactory::new();
     }
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'id', 'id_product');
     }
 }
