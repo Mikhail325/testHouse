@@ -4,9 +4,11 @@ namespace App\Module\products\Repositories;
 
 use App\Module\products\Models\Product;
 use App\Module\products\Repositories\Interfaces\ProductRepositoriesInterface;
+use Illuminate\Support\Collection;
+
 class ProductRepositories implements ProductRepositoriesInterface
 {
-    public function getProducts(array $filter)
+    public function getProducts(array $filter): Collection
     {
         $products = Product::query()->select(['id', 'name', 'price']);
 
@@ -30,7 +32,7 @@ class ProductRepositories implements ProductRepositoriesInterface
         return collect($result);
     }
 
-    public function getProductById(int $id)
+    public function getProductById(int $id): Product|null
     {
         return Product::find($id);
     }

@@ -30,7 +30,13 @@ class UseCaseProduct
         return $product;
     }
 
-    public function addFeedback(int $id, string $feedback)
+    /**
+     * @param int $id
+     * @param string $feedback
+     * @return void
+     * Добавления отзыва товару
+     */
+    public function addFeedback(int $id, string $feedback): void
     {
         $this->feedbackRepository->create($id, $feedback);
     }

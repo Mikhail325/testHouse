@@ -7,7 +7,7 @@ use App\Module\products\Repositories\Interfaces\FeedbackRepositoriesInterface;
 class FeedbackRepositories implements FeedbackRepositoriesInterface
 {
 
-    public function create(int $productId, string $feedback)
+    public function create(int $productId, string $feedback): void
     {
         Feedback::create([
             'feedback' => $feedback,
