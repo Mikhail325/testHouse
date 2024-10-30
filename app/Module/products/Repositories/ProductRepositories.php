@@ -6,9 +6,7 @@ use App\Module\products\Models\Product;
 use App\Module\products\Repositories\Interfaces\ProductRepositoriesInterface;
 class ProductRepositories implements ProductRepositoriesInterface
 {
-    const COUNT_PRODUCT = 5;
-
-    public function getProduct(array $filter)
+    public function getProducts(array $filter)
     {
         $products = Product::query()->select(['id', 'name', 'price']);
 
@@ -30,5 +28,10 @@ class ProductRepositories implements ProductRepositoriesInterface
         }
 
         return collect($result);
+    }
+
+    public function getProductById(int $id)
+    {
+        return Product::find($id);
     }
 }

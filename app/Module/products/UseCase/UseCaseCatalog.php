@@ -15,7 +15,7 @@ class UseCaseCatalog
 
     public function getListProducts(array $filter)
     {
-        $products = $this->productRepository->getProduct($filter);
+        $products = $this->productRepository->getProducts($filter);
 
         if (!isset($products)) {
             return null;

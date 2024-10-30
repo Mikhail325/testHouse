@@ -2,7 +2,6 @@
 
 namespace App\Module\products\Models;
 
-use App\Module\products\Models\Product;
 use Database\Factories\FeedbackFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +11,7 @@ class Feedback extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $guarded = [];
     protected $hidden = ["created_at", "updated_at", "deleted_at"];
     protected static function newFactory()
     {

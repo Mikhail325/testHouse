@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Module\products\Controllers\CatalogController;
+use App\Module\products\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,9 @@ use App\Module\products\Controllers\CatalogController;
 
 Route::prefix('catalog')->group(function () {
     Route::get('/', [CatalogController::class, 'getListProducts']);
+});
+
+Route::prefix('product')->group(function () {
+    Route::get('/{id}/feedback', [ProductController::class, 'getFeedbackByProductsId']);
+    Route::post('/{id}/add-feedback', [ProductController::class, 'addFeedback'])->middleware('web');
 });
